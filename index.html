@@ -506,18 +506,11 @@ async function submit(){
   if(!c.name||!c.tel||!c.mail){alert('Vyplňte prosím jméno, telefon a e-mail.');return;}
   state.contact = c;
 
-  if(WEBHOOK_URL){
-    try{
-      await fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({...state, csv:csvLine(), price:calc()})});
-      showSuccess();
-      return;
-    }catch(e){/* spadne na mailto */}
-  }
-  const subject = encodeURIComponent('Poptávka DDD — '+PRICING.pest[state.pest].label+' — '+(c.firm||c.name));
-  const body = encodeURIComponent(
-`NOVÁ POPTÁVKA Z WEBU 4REX.CZ
----------------------------------
-Objekt:   ${PRICING.object[state.object].label}
+  const btn = document.getElementById('send');
+  btn.disabled = true; btn.textContent = 'Odesílám…';
+
+  const summary =
+`Objekt:   ${PRICING.object[state.object].label}
 Škůdce:   ${PRICING.pest[state.pest].label}
 Zásah:    ${PRICING.type[state.type].label}
 Velikost: ${PRICING.size[state.size].label}
@@ -528,11 +521,46 @@ Firma:   ${c.firm}
 Telefon: ${c.tel}
 E-mail:  ${c.mail}
 Adresa:  ${c.addr}
-Poznámka: ${c.note}
+Poznámka: ${c.note}`;
 
-CSV: ${csvLine()}`);
-  window.location.href = `mailto:${MY_EMAIL}?subject=${subject}&body=${body}`;
-  showSuccess();
+  /* 1) Modul 2 webhook, pokud je nastaven */
+  if(WEBHOOK_URL){
+    try{
+      await fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({...state, csv:csvLine(), price:calc()})});
+      showSuccess();
+      return;
+    }catch(e){/* pokračuje na FormSubmit */}
+  }
+
+  /* 2) FormSubmit — doručení na e-mail */
+  try{
+    const r = await fetch('https://formsubmit.co/ajax/'+MY_EMAIL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'Poptávka DDD — '+PRICING.pest[state.pest].label+' — '+(c.firm||c.name),
+        _template:'box',
+        Souhrn:summary,
+        CSV:csvLine()
+      })
+    });
+    if(r.ok){ showSuccess(); return; }
+    throw new Error('HTTP '+r.status);
+  }catch(e){
+    showFail(summary);
+  }
+}
+
+function showFail(summary){
+  stepHost.innerHTML = `
+    <div class="success">
+      <h3>Poptávku se nepodařilo odeslat</h3>
+      <p>Omlouváme se, něco se pokazilo. Ozvěte se nám prosím přímo — poptávku vyřídíme obratem:</p>
+      <p><strong><a href="tel:+420723850180">+420 723 850 180</a></strong><br>
+      <strong><a href="mailto:${MY_EMAIL}">${MY_EMAIL}</a></strong></p>
+      <div class="field"><label>Shrnutí poptávky ke zkopírování:</label><textarea rows="9" readonly>${summary}</textarea></div>
+      <div class="nav"><span></span><button type="button" class="btn btn-dark" onclick="renderStep()">Zkusit znovu</button></div>
+    </div>`;
 }
 
 function showSuccess(){
