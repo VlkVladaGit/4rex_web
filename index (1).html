@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4REX.CZ — Deratizace, dezinsekce, dezinfekce pro firmy | Praha a Střední Čechy</title>
+<meta name="description" content="Profesionální DDD služby pro gastroprovozy, hotely, čerpací stanice a správu budov. Deratizace, dezinsekce, dezinfekce s certifikací pro potravinářské provozy. Praha a Střední Čechy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16181d;
+  --ink-soft:#4a4f58;
+  --paper:#ffffff;
+  --paper-dim:#f5f6f7;
+  --line:#e3e5e8;
+  --hazard:#ffc514;
+  --hazard-deep:#b8890a;
+  --ok:#2f8a4c;
+  --radius:10px;
+  --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{
+  font-family:'Source Sans 3',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.55;
+  font-size:17px;
+}
+h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.15}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--hazard-deep);outline-offset:2px}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-in{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{display:block}
+.logo-name{font-family:'Archivo';font-weight:800;font-size:1.25rem;letter-spacing:.02em}
+.logo-name span{color:var(--hazard-deep)}
+.header-cta{margin-left:auto;display:flex;align-items:center;gap:16px}
+.tel{font-weight:700;text-decoration:none;font-size:.95rem;white-space:nowrap}
+.btn{
+  display:inline-block;border:none;border-radius:var(--radius);
+  font-family:'Archivo';font-weight:700;font-size:.95rem;
+  padding:11px 20px;text-decoration:none;text-align:center;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn-hazard{background:var(--hazard);color:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.btn-hazard:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(184,137,10,.35)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{max-width:var(--maxw);margin:0 auto;padding:64px 20px 48px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Archivo';font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:26px;height:3px;background:var(--hazard)}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3rem);font-weight:800;letter-spacing:-.01em;margin-bottom:18px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%, var(--hazard) 62%, var(--hazard) 94%, transparent 94%)}
+.hero p{color:var(--ink-soft);font-size:1.1rem;max-width:34em;margin-bottom:28px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{display:flex;justify-content:center}
+.hero-visual svg{width:100%;max-width:320px;height:auto}
+
+/* trust strip */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-dim)}
+.trust-in{max-width:var(--maxw);margin:0 auto;padding:16px 20px;display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+.trust-item{display:flex;align-items:center;gap:9px;font-size:.92rem;font-weight:600;color:var(--ink-soft)}
+.trust-item svg{flex:none}
+
+/* ---------- segments ---------- */
+section{padding:64px 20px}
+.section-in{max-width:var(--maxw);margin:0 auto}
+.section-head{max-width:38em;margin-bottom:36px}
+.section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin-bottom:10px}
+.section-head p{color:var(--ink-soft)}
+.segments{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.seg{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 20px;background:#fff;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.seg:hover{border-color:var(--hazard);transform:translateY(-2px)}
+.seg .seg-ico{width:44px;height:44px;border-radius:8px;background:var(--paper-dim);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.seg h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.seg p{font-size:.92rem;color:var(--ink-soft)}
+
+/* ---------- wizard ---------- */
+#poptavka{background:var(--ink);color:#fff}
+#poptavka .section-head h2{color:#fff}
+#poptavka .section-head p{color:#b8bcc4}
+.wizard-wrap{display:grid;grid-template-columns:1.05fr .65fr;gap:24px;align-items:start}
+.wizard{
+  background:#fff;color:var(--ink);border-radius:14px;
+  padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+.steps-bar{display:flex;gap:6px;margin-bottom:24px}
+.steps-bar i{flex:1;height:5px;border-radius:3px;background:var(--line);transition:background .2s ease}
+.steps-bar i.done{background:var(--hazard)}
+.step-label{font-family:'Archivo';font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.wizard h3{font-size:1.3rem;font-weight:800;margin-bottom:18px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{
+  border:1.5px solid var(--line);border-radius:var(--radius);
+  background:#fff;padding:14px;text-align:left;
+  display:flex;align-items:center;gap:12px;font-size:.98rem;font-weight:600;
+  transition:border-color .12s ease, background .12s ease;
+}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{border-color:var(--hazard-deep);background:#fff8e0}
+.opt .em{font-size:1.35rem;flex:none}
+.wizard .nav{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:5px}
+.field input,.field textarea,.field select{
+  width:100%;border:1.5px solid var(--line);border-radius:8px;
+  padding:11px 12px;font:inherit;background:#fff;
+}
+.field input:focus,.field textarea:focus{border-color:var(--hazard-deep);outline:none}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hint{font-size:.85rem;color:var(--ink-soft);margin-top:6px}
+
+/* ticket */
+.ticket{
+  background:#fff;color:var(--ink);border-radius:14px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  position:sticky;top:84px;
+}
+.ticket-head{
+  background:repeating-linear-gradient(-45deg, var(--hazard) 0 14px, var(--ink) 14px 28px);
+  height:10px;
+}
+.ticket-body{padding:22px}
+.ticket h4{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.ticket-rows{border-top:1px dashed var(--line)}
+.trow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.94rem}
+.trow .k{color:var(--ink-soft)}
+.trow .v{font-weight:700;text-align:right}
+.trow.empty .v{color:#c6c9ce;font-weight:400}
+.ticket-price{margin-top:16px;padding:16px;border-radius:10px;background:var(--paper-dim);text-align:center}
+.ticket-price .lbl{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.ticket-price .val{font-family:'Archivo';font-weight:800;font-size:1.6rem;margin-top:4px}
+.ticket-price .per{font-size:.85rem;color:var(--ink-soft)}
+.ticket-note{font-size:.8rem;color:var(--ink-soft);margin-top:12px}
+
+/* success */
+.success{text-align:center;padding:20px 6px}
+.success .badge{width:64px;height:64px;border-radius:50%;background:#e8f5ec;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.success h3{margin-bottom:10px}
+.success p{color:var(--ink-soft);margin-bottom:8px}
+
+/* ---------- how ---------- */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.how-step{border-left:3px solid var(--hazard);padding:4px 0 4px 18px}
+.how-step h3{font-size:1.02rem;margin-bottom:6px}
+.how-step p{font-size:.93rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+footer{background:var(--paper-dim);border-top:1px solid var(--line);padding:44px 20px}
+.foot-in{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+.foot-in h4{font-size:.95rem;margin-bottom:12px}
+.foot-in p, .foot-in a{font-size:.92rem;color:var(--ink-soft);text-decoration:none;display:block;margin-bottom:6px}
+.foot-in a:hover{color:var(--ink)}
+.copyright{max-width:var(--maxw);margin:28px auto 0;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft)}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:44px}
+  .hero-visual{order:-1}
+  .hero-visual svg{max-width:180px}
+  .segments{grid-template-columns:1fr 1fr}
+  .wizard-wrap{grid-template-columns:1fr}
+  .ticket{position:static}
+  .how{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .opts{grid-template-columns:1fr}
+  .segments{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .header-cta .tel{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="logo" href="#" aria-label="4REX.CZ — úvod">
+      <svg width="34" height="30" viewBox="0 0 34 30" aria-hidden="true">
+        <polygon points="17,1 33,29 1,29" fill="#ffc514"/>
+        <polygon points="17,7.5 28.5,26.5 5.5,26.5" fill="#16181d"/>
+        <text x="17" y="24" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="13" fill="#ffc514">4</text>
+      </svg>
+      <span class="logo-name">4REX<span>.CZ</span></span>
+    </a>
+    <div class="header-cta">
+      <a class="tel" href="tel:+420723850180">+420 723 850 180</a>
+      <a class="btn btn-hazard" href="#poptavka">Nezávazná poptávka</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">Deratizace · Dezinsekce · Dezinfekce</span>
+    <h1>Váš provoz <em>čistý, bezpečný</em> a v souladu s předpisy.</h1>
+    <p>Profesionální ochrana proti škůdcům pro gastroprovozy, ubytovací zařízení, čerpací stanice a správu budov. Certifikace pro potravinářské provozy, protokoly dle hygienických norem, diskrétní zásahy mimo provozní špičku.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="#poptavka">Spočítat orientační cenu</a>
+      <a class="btn btn-ghost" href="#sluzby">Prohlédnout služby</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 200 176">
+      <polygon points="100,4 196,172 4,172" fill="#ffc514"/>
+      <polygon points="100,34 172,158 28,158" fill="#16181d"/>
+      <text x="100" y="140" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="72" fill="#ffc514">4</text>
+    </svg>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-in">
+    <span class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8890a" stroke-width="2.4"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg> Certifikace pro potravinářské a zemědělské provozy</span>
+    <span class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8890a" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> 25 let praxe v gastronomii — známe váš provoz zevnitř</span>
+    <span class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8890a" stroke-width="2.4"><path d="M4 12h16M12 4v16" transform="rotate(45 12 12)"/><circle cx="12" cy="12" r="9"/></svg> Praha a Střední Čechy</span>
+  </div>
+</div>
+
+<section id="sluzby">
+  <div class="section-in">
+    <div class="section-head">
+      <h2>Pro koho pracujeme</h2>
+      <p>Každý typ provozu má vlastní rizika, normy a rytmus. Zásah přizpůsobíme tak, aby vás nezastavil.</p>
+    </div>
+    <div class="segments">
+      <div class="seg">
+        <div class="seg-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Gastro a pohostinství</h3>
+        <p>Restaurace, kuchyně, kavárny. Monitoring dle HACCP, zásahy mimo otevírací dobu, dokumentace pro hygienickou kontrolu.</p>
+      </div>
+      <div class="seg">
+        <div class="seg-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2"/></svg></div>
+        <h3>Ubytovací zařízení</h3>
+        <p>Hotely, penziony, ubytovny. Diskrétní řešení štěnic a dalších škůdců bez dopadu na pověst a recenze.</p>
+      </div>
+      <div class="seg">
+        <div class="seg-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="2"><path d="M5 21V5a2 2 0 012-2h6a2 2 0 012 2v16"/><path d="M15 9h3a2 2 0 012 2v8a2 2 0 01-2 2"/><path d="M8 7h4"/></svg></div>
+        <h3>Čerpací stanice</h3>
+        <p>Prodejny, sklady, zázemí i venkovní plochy. Pravidelný monitoring hlodavců s nonstop provozem bez omezení.</p>
+      </div>
+      <div class="seg">
+        <div class="seg-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="2"><rect x="3" y="7" width="8" height="14"/><rect x="13" y="3" width="8" height="18"/><path d="M6 11h2M6 15h2M16 7h2M16 11h2M16 15h2"/></svg></div>
+        <h3>Správa budov a SVJ</h3>
+        <p>Bytové domy, kanceláře, sklepy, kontejnerová stání. Plošná deratizace, smluvní servis, jasné reporty pro výbor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="poptavka">
+  <div class="section-in">
+    <div class="section-head">
+      <h2>Nezávazná poptávka za 2 minuty</h2>
+      <p>Odpovězte na čtyři otázky. Cena se počítá průběžně — vpravo vidíte orientační kalkulaci ještě před odesláním.</p>
+    </div>
+    <div class="wizard-wrap">
+      <div class="wizard" id="wizard">
+        <div class="steps-bar" id="stepsBar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div id="stepHost"></div>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <div class="ticket-head"></div>
+        <div class="ticket-body">
+          <h4>Orientační kalkulace</h4>
+          <div class="ticket-rows">
+            <div class="trow empty" id="tObj"><span class="k">Objekt</span><span class="v">—</span></div>
+            <div class="trow empty" id="tPest"><span class="k">Škůdce</span><span class="v">—</span></div>
+            <div class="trow empty" id="tType"><span class="k">Zásah</span><span class="v">—</span></div>
+            <div class="trow empty" id="tSize"><span class="k">Velikost</span><span class="v">—</span></div>
+          </div>
+          <div class="ticket-price">
+            <div class="lbl">Předběžná cena</div>
+            <div class="val" id="tPrice">— Kč</div>
+            <div class="per" id="tPer"></div>
+          </div>
+          <p class="ticket-note">Cena je orientační. Přesnou nabídku připravíme po bezplatné prohlídce nebo telefonické konzultaci.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-in">
+    <div class="section-head">
+      <h2>Jak zásah probíhá</h2>
+    </div>
+    <div class="how">
+      <div class="how-step">
+        <h3>1 — Konzultace a prohlídka</h3>
+        <p>Do 24 hodin se ozveme, domluvíme prohlídku nebo rovnou termín zásahu. U akutních případů řešíme přednostně.</p>
+      </div>
+      <div class="how-step">
+        <h3>2 — Zásah dle norem</h3>
+        <p>Používáme pouze registrované přípravky v předepsaném množství. Vše zapisujeme do protokolu o zásahu, který obdržíte e-mailem.</p>
+      </div>
+      <div class="how-step">
+        <h3>3 — Kontrola a prevence</h3>
+        <p>Doporučíme další postup a preventivní opatření. Pro provozy s HACCP nabízíme pravidelný smluvní monitoring s kompletní dokumentací.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <h4>4REX.CZ</h4>
+      <p>Deratizace, dezinsekce a dezinfekce pro firmy a správce objektů. Praha a Střední Čechy.</p>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <a href="tel:+420723850180">+420 723 850 180</a>
+      <a href="mailto:vlk4rex@email.cz">vlk4rex@email.cz</a>
+    </div>
+    <div>
+      <h4>Služby</h4>
+      <p>Deratizace (hlodavci)</p>
+      <p>Dezinsekce (hmyz)</p>
+      <p>Dezinfekce prostor</p>
+      <p>Smluvní monitoring HACCP</p>
+    </div>
+  </div>
+  <div class="copyright">© 2026 4REX.CZ · IČO doplnit · Osoba odborně způsobilá dle zákona č. 258/2000 Sb.</div>
+</footer>
+
+<script>
+/* ================= KONFIGURACE ================= */
+/* Modul 2: sem vložíš URL Google Apps Script webhooku. Dokud je prázdné, formulář se odešle e-mailem. */
+const WEBHOOK_URL = "";
+const MY_EMAIL = "vlk4rex@email.cz";
+
+/* Ceník — snadno upravitelný. base = jednorázový zásah v Kč */
+const PRICING = {
+  pest: {
+    hlodavci:  {label:"Hlodavci (deratizace)", base:1800},
+    svabi:     {label:"Švábi / rusi", base:2200},
+    mravenci:  {label:"Mravenci", base:1600},
+    stenice:   {label:"Štěnice", base:3500},
+    vosy:      {label:"Vosy / sršni", base:1900},
+    dezinfekce:{label:"Dezinfekce prostor", base:2000},
+    nevim:     {label:"Nevím / jiné", base:1800}
+  },
+  object: {
+    gastro:  {label:"Restaurace / gastro", mult:1.25},
+    hotel:   {label:"Hotel / ubytování", mult:1.3},
+    cerpaci: {label:"Čerpací stanice", mult:1.2},
+    sprava:  {label:"Bytový dům / SVJ", mult:1.15},
+    kancelar:{label:"Kancelář / prodejna", mult:1.0},
+    sklad:   {label:"Sklad / výroba", mult:1.35},
+    jiny:    {label:"Jiný objekt", mult:1.0}
+  },
+  type: {
+    jednorazovy:{label:"Jednorázový zásah", mult:1.0, per:""},
+    akutni:     {label:"Akutní zásah (do 48 h)", mult:1.4, per:""},
+    monitoring: {label:"Pravidelný monitoring", mult:0.55, per:"/ měsíc"},
+    konzultace: {label:"Konzultace / prohlídka", fixed:0, per:"", note:"zdarma"}
+  },
+  size: {
+    s:{label:"do 100 m²", mult:1.0},
+    m:{label:"100–300 m²", mult:1.35},
+    l:{label:"300–800 m²", mult:1.8},
+    xl:{label:"nad 800 m²", mult:2.4}
+  }
+};
+
+const state = {object:null, pest:null, type:null, size:null, contact:{}};
+let step = 0;
+
+const stepHost = document.getElementById('stepHost');
+const stepsBar = document.getElementById('stepsBar').children;
+
+const STEPS = [
+  {key:'object', label:'Krok 1 ze 5', title:'O jaký objekt se jedná?', dict:'object', icons:{gastro:'🍽️',hotel:'🏨',cerpaci:'⛽',sprava:'🏢',kancelar:'💼',sklad:'📦',jiny:'❓'}},
+  {key:'pest', label:'Krok 2 ze 5', title:'Jaký škůdce vás trápí?', dict:'pest', icons:{hlodavci:'🐀',svabi:'🪳',mravenci:'🐜',stenice:'🛏️',vosy:'🐝',dezinfekce:'🧴',nevim:'❓'}},
+  {key:'type', label:'Krok 3 ze 5', title:'Jaký zásah potřebujete?', dict:'type', icons:{jednorazovy:'🎯',akutni:'⚠️',monitoring:'🔁',konzultace:'💬'}},
+  {key:'size', label:'Krok 4 ze 5', title:'Jak velký je prostor?', dict:'size', icons:{s:'▫️',m:'◽',l:'◻️',xl:'⬜'}}
+];
+
+function fmt(n){return n.toLocaleString('cs-CZ');}
+
+function calc(){
+  if(!state.pest||!state.object||!state.type||!state.size) return null;
+  const t = PRICING.type[state.type];
+  if('fixed' in t) return {lo:0,hi:0,per:t.per,free:true};
+  const base = PRICING.pest[state.pest].base
+    * PRICING.object[state.object].mult
+    * t.mult
+    * PRICING.size[state.size].mult;
+  const lo = Math.round(base/100)*100;
+  const hi = Math.round(base*1.35/100)*100;
+  return {lo,hi,per:t.per,free:false};
+}
+
+function renderTicket(){
+  const map = [['tObj','object'],['tPest','pest'],['tType','type'],['tSize','size']];
+  map.forEach(([id,key])=>{
+    const el = document.getElementById(id);
+    const val = state[key];
+    if(val){
+      el.classList.remove('empty');
+      el.querySelector('.v').textContent = PRICING[key==='object'?'object':key==='pest'?'pest':key==='type'?'type':'size'][val].label;
+    } else {
+      el.classList.add('empty');
+      el.querySelector('.v').textContent = '—';
+    }
+  });
+  const p = calc();
+  const priceEl = document.getElementById('tPrice');
+  const perEl = document.getElementById('tPer');
+  if(!p){priceEl.textContent='— Kč';perEl.textContent='';return;}
+  if(p.free){priceEl.textContent='Zdarma';perEl.textContent='úvodní konzultace nezávazně';return;}
+  priceEl.textContent = fmt(p.lo)+' – '+fmt(p.hi)+' Kč';
+  perEl.textContent = p.per ? 'za monitoring '+p.per : 'jednorázově, bez DPH neúčtujeme — nejsme plátci';
+}
+
+function renderStep(){
+  for(let i=0;i<4;i++) stepsBar[i].className = i<step||step>=4?'done':'';
+  if(step<4){
+    const s = STEPS[step];
+    const dict = PRICING[s.dict];
+    let html = `<div class="step-label">${s.label}</div><h3>${s.title}</h3><div class="opts">`;
+    for(const k in dict){
+      const sel = state[s.key]===k?' sel':'';
+      html += `<button type="button" class="opt${sel}" data-k="${k}"><span class="em" aria-hidden="true">${s.icons[k]||''}</span>${dict[k].label}</button>`;
+    }
+    html += `</div><div class="nav">`;
+    html += step>0?`<button type="button" class="btn btn-ghost" id="back">← Zpět</button>`:`<span></span>`;
+    html += `<button type="button" class="btn btn-dark" id="next" ${state[s.key]?'':'disabled style="opacity:.4"'}>Pokračovat →</button></div>`;
+    stepHost.innerHTML = html;
+    stepHost.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+      state[s.key]=b.dataset.k; renderTicket(); step++; renderStep();
+    }));
+    const back = document.getElementById('back');
+    if(back) back.addEventListener('click',()=>{step--;renderStep();});
+    const next = document.getElementById('next');
+    if(next) next.addEventListener('click',()=>{if(state[s.key]){step++;renderStep();}});
+  } else if(step===4){
+    stepHost.innerHTML = `
+      <div class="step-label">Krok 5 ze 5</div>
+      <h3>Kam poslat nabídku?</h3>
+      <div class="two-col">
+        <div class="field"><label for="fName">Jméno a příjmení *</label><input id="fName" autocomplete="name" required></div>
+        <div class="field"><label for="fFirm">Firma / objekt</label><input id="fFirm" autocomplete="organization"></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="fTel">Telefon *</label><input id="fTel" type="tel" autocomplete="tel" required></div>
+        <div class="field"><label for="fMail">E-mail *</label><input id="fMail" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field"><label for="fAddr">Adresa objektu</label><input id="fAddr" autocomplete="street-address"></div>
+      <div class="field"><label for="fNote">Poznámka (co jste viděli, kde, od kdy…)</label><textarea id="fNote" rows="3"></textarea></div>
+      <p class="hint">Odesláním souhlasíte se zpracováním údajů pro účely vyřízení poptávky.</p>
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" id="back">← Zpět</button>
+        <button type="button" class="btn btn-hazard" id="send">Odeslat poptávku</button>
+      </div>`;
+    document.getElementById('back').addEventListener('click',()=>{step--;renderStep();});
+    document.getElementById('send').addEventListener('click',submit);
+  }
+}
+
+function csvLine(){
+  const c = state.contact;
+  const p = calc()||{lo:'',hi:''};
+  const cells = [
+    new Date().toISOString(),
+    PRICING.object[state.object].label,
+    PRICING.pest[state.pest].label,
+    PRICING.type[state.type].label,
+    PRICING.size[state.size].label,
+    p.lo, p.hi,
+    c.name, c.firm, c.tel, c.mail, c.addr, c.note
+  ];
+  return cells.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';');
+}
+
+async function submit(){
+  const get = id=>document.getElementById(id).value.trim();
+  const c = {name:get('fName'),firm:get('fFirm'),tel:get('fTel'),mail:get('fMail'),addr:get('fAddr'),note:get('fNote')};
+  if(!c.name||!c.tel||!c.mail){alert('Vyplňte prosím jméno, telefon a e-mail.');return;}
+  state.contact = c;
+
+  const btn = document.getElementById('send');
+  btn.disabled = true; btn.textContent = 'Odesílám…';
+
+  const summary =
+`Objekt:   ${PRICING.object[state.object].label}
+Škůdce:   ${PRICING.pest[state.pest].label}
+Zásah:    ${PRICING.type[state.type].label}
+Velikost: ${PRICING.size[state.size].label}
+Orientační cena: ${document.getElementById('tPrice').textContent}
+
+Jméno:   ${c.name}
+Firma:   ${c.firm}
+Telefon: ${c.tel}
+E-mail:  ${c.mail}
+Adresa:  ${c.addr}
+Poznámka: ${c.note}`;
+
+  /* 1) Modul 2 webhook, pokud je nastaven */
+  if(WEBHOOK_URL){
+    try{
+      await fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({...state, csv:csvLine(), price:calc()})});
+      showSuccess();
+      return;
+    }catch(e){/* pokračuje na FormSubmit */}
+  }
+
+  /* 2) FormSubmit — doručení na e-mail */
+  try{
+    const r = await fetch('https://formsubmit.co/ajax/'+MY_EMAIL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'Poptávka DDD — '+PRICING.pest[state.pest].label+' — '+(c.firm||c.name),
+        _template:'box',
+        Souhrn:summary,
+        CSV:csvLine()
+      })
+    });
+    if(r.ok){ showSuccess(); return; }
+    throw new Error('HTTP '+r.status);
+  }catch(e){
+    showFail(summary);
+  }
+}
+
+function showFail(summary){
+  stepHost.innerHTML = `
+    <div class="success">
+      <h3>Poptávku se nepodařilo odeslat</h3>
+      <p>Omlouváme se, něco se pokazilo. Ozvěte se nám prosím přímo — poptávku vyřídíme obratem:</p>
+      <p><strong><a href="tel:+420723850180">+420 723 850 180</a></strong><br>
+      <strong><a href="mailto:${MY_EMAIL}">${MY_EMAIL}</a></strong></p>
+      <div class="field"><label>Shrnutí poptávky ke zkopírování:</label><textarea rows="9" readonly>${summary}</textarea></div>
+      <div class="nav"><span></span><button type="button" class="btn btn-dark" onclick="renderStep()">Zkusit znovu</button></div>
+    </div>`;
+}
+
+function showSuccess(){
+  for(let i=0;i<4;i++) stepsBar[i].className='done';
+  stepHost.innerHTML = `
+    <div class="success">
+      <div class="badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2f8a4c" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg></div>
+      <h3>Poptávka je na cestě</h3>
+      <p>Ozveme se vám do 24 hodin s návrhem termínu konzultace nebo zásahu.</p>
+      <p>Akutní případ? Volejte rovnou <strong><a href="tel:+420723850180">+420 723 850 180</a></strong>.</p>
+    </div>`;
+}
+
+renderStep();
+renderTicket();
+</script>
+</body>
+</html>
